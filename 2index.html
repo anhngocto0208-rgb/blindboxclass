@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Weekly Lucky Blindbox</title>
+
+<style>
+body{
+font-family:Arial;
+text-align:center;
+background:#f5f5ff;
+}
+
+.box{
+margin-top:100px;
+}
+
+button{
+padding:12px 25px;
+font-size:18px;
+background:#6a5cff;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+input{
+padding:10px;
+font-size:16px;
+}
+
+#result{
+font-size:26px;
+margin-top:30px;
+color:#ff3b3b;
+}
+</style>
+</head>
+
+<body>
+
+<div id="login" class="box">
+
+<h2>🔒 Câu hỏi để mở Blindbox</h2>
+
+<p>HAPPY NGHĨA LÀ GÌ?</p>
+
+<input id="answer" placeholder="Nhập đáp án">
+
+<br><br>
+
+<button onclick="check()">Vào Blindbox</button>
+
+<p id="wrong"></p>
+
+</div>
+
+
+<div id="game" class="box" style="display:none">
+
+<h2>🎁 Weekly Lucky Blindbox</h2>
+
+<button onclick="openBox()">Mở hộp</button>
+
+<p id="result"></p>
+
+</div>
+
+
+<script>
+
+function check(){
+
+let ans=document.getElementById("answer").value.toLowerCase();
+
+if(ans=="vui"||ans=="vui vẻ"){
+
+document.getElementById("login").style.display="none";
+document.getElementById("game").style.display="block";
+
+}
+
+else{
+
+document.getElementById("wrong").innerHTML="Sai rồi 😆";
+
+}
+
+}
+
+
+function openBox(){
+
+let winner="NGỌC ANH";  //
+
+document.getElementById("result").innerHTML=
+"🎉 Người trúng thưởng tuần này là: "+winner;
+
+}
+
+</script>
+
+</body>
+</html>
