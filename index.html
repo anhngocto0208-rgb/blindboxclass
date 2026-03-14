@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Weekly Lucky Blindbox</title>
+
+<style>
+body{
+font-family: Arial;
+text-align:center;
+background:linear-gradient(135deg,#ffd6ec,#d6f0ff);
+height:100vh;
+margin:0;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.box{
+background:white;
+padding:40px;
+border-radius:20px;
+width:350px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+button{
+padding:10px 20px;
+border:none;
+border-radius:10px;
+background:#ff7eb3;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#ff4f98;
+}
+
+input{
+padding:10px;
+width:80%;
+margin:10px;
+border-radius:10px;
+border:1px solid #ccc;
+}
+
+#gift{
+font-size:80px;
+animation:shake 1s infinite;
+}
+
+@keyframes shake{
+0%{transform:rotate(0)}
+25%{transform:rotate(5deg)}
+50%{transform:rotate(-5deg)}
+75%{transform:rotate(5deg)}
+100%{transform:rotate(0)}
+}
+</style>
+</head>
+
+<body>
+
+<div class="box" id="page1">
+<h1>🎁 Weekly Lucky Blindbox</h1>
+<p>Ai sẽ là người may mắn tuần này?</p>
+<div id="gift">🎁</div>
+<br><br>
+<button onclick="goQuestion()">Open Blindbox</button>
+</div>
+
+<div class="box" id="page2" style="display:none;">
+<h2>Câu hỏi để mở blindbox</h2>
+<p>HAPPY NGHĨA LÀ GÌ?</p>
+<input id="answer" placeholder="Nhập câu trả lời">
+<br>
+<button onclick="checkAnswer()">Submit</button>
+<p id="wrong" style="color:red;"></p>
+</div>
+
+<div class="box" id="page3" style="display:none;">
+<h2>Đang mở blindbox...</h2>
+<div style="font-size:70px;">🎁</div>
+<br>
+<button onclick="openBox()">Open</button>
+</div>
+
+<div class="box" id="page4" style="display:none;">
+<h2>🎉 Người trúng thưởng tuần này</h2>
+<h1 id="winner"></h1>
+</div>
+
+<script>
+
+let students=[
+"NGỌC ANH"
+];
+
+function goQuestion(){
+document.getElementById("page1").style.display="none";
+document.getElementById("page2").style.display="block";
+}
+
+function checkAnswer(){
+
+let ans=document.getElementById("answer").value.toLowerCase();
+
+if(ans=="vui"||ans=="vui vẻ"){
+document.getElementById("page2").style.display="none";
+document.getElementById("page3").style.display="block";
+}else{
+document.getElementById("wrong").innerText="Sai rồi 😆 thử lại!";
+}
+
+}
+
+function openBox(){
+
+let random=Math.floor(Math.random()*students.length);
+
+let name=students[random];
+
+document.getElementById("page3").style.display="none";
+document.getElementById("page4").style.display="block";
+
+document.getElementById("winner").innerText=name;
+
+}
+
+</script>
+
+</body>
+</html>
